@@ -6,7 +6,7 @@ type Inputs = {
 	password: number;
 };
 
-const RegisterForm = () => {
+const LoginForm = () => {
 	const {
 		register,
 		handleSubmit,
@@ -19,7 +19,7 @@ const RegisterForm = () => {
 	return (
 		<Row className="justify-content-md-center">
 			<Col xs={5} className="p-4 bg-white">
-				<h5 className="text-center">Registration</h5>
+				<h5 className="text-center">Login</h5>
 				<Form onSubmit={handleSubmit(onSubmit)}>
 					<Form.Group className="mb-3" controlId="formBasicEmail">
 						<Form.Label>Email address</Form.Label>
@@ -38,11 +38,11 @@ const RegisterForm = () => {
 					</Form.Group>
 
 					<Button variant="primary" type="submit">
-						Register
+						Login
 					</Button>
 				</Form>
 			</Col>
 		</Row>
 	);
 };
-export default RegisterForm;
+export default LoginForm;
