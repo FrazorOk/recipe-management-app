@@ -1,0 +1,24 @@
+.socialIcon {
+	width: 35px;
+	height: 35px;
+
+	background-color: white;
+	border-radius: 50%;
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: all 0.3s ease 0s;
+
+	&__img {
+		width: 65%;
+		height: 65%;
+		object-fit: cover;
+	}
+}
+
+.socialIcon:hover {
+	background-color: rgb(150, 150, 150);
+}

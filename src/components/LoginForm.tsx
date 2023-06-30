@@ -1,12 +1,15 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useAppDispatch } from '../hooks/redux';
+import { loginUser } from '../store/ActionCreaters';
 
 type Inputs = {
 	email: string;
-	password: number;
+	password: string;
 };
 
 const LoginForm = () => {
+	const dispatch = useAppDispatch();
+
 	const {
 		register,
 		handleSubmit,
@@ -14,11 +17,14 @@ const LoginForm = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		dispatch(loginUser(data.email, data.password));
+	};
 
 	return (
-		<Row className="justify-content-md-center">
-			<Col xs={5} className="p-4 bg-white">
+		<>
+			Login form
+			{/* <Col xs={5} className="p-4 bg-white">
 				<h5 className="text-center">Login</h5>
 				<Form onSubmit={handleSubmit(onSubmit)}>
 					<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -41,8 +47,8 @@ const LoginForm = () => {
 						Login
 					</Button>
 				</Form>
-			</Col>
-		</Row>
+			</Col> */}
+		</>
 	);
 };
 export default LoginForm;

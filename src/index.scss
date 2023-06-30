@@ -1,0 +1,19 @@
+body {
+	font-family: 'Ruda', sans-serif;
+}
+
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.page {
+	flex: 1 1 auto;
+
+	background-color: #3a3f58;
+}
+
+body._lock {
+	overflow: hidden;
+}

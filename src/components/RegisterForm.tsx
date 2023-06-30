@@ -1,12 +1,15 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { registerNewUser } from '../store/ActionCreaters';
+import { useAppDispatch } from '../hooks/redux';
 
 type Inputs = {
 	email: string;
-	password: number;
+	password: string;
 };
 
 const RegisterForm = () => {
+	const dispatch = useAppDispatch();
+
 	const {
 		register,
 		handleSubmit,
@@ -14,11 +17,15 @@ const RegisterForm = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		dispatch(registerNewUser(data.email, data.password));
+		console.log(data);
+	};
 
 	return (
-		<Row className="justify-content-md-center">
-			<Col xs={5} className="p-4 bg-white">
+		<div>
+			Register form
+			{/* <Col xs={5} className="p-4 bg-white">
 				<h5 className="text-center">Registration</h5>
 				<Form onSubmit={handleSubmit(onSubmit)}>
 					<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -41,8 +48,8 @@ const RegisterForm = () => {
 						Register
 					</Button>
 				</Form>
-			</Col>
-		</Row>
+			</Col> */}
+		</div>
 	);
 };
 export default RegisterForm;

@@ -1,0 +1,95 @@
+.sort {
+	position: fixed;
+	top: 25%;
+	left: calc(100% + 240px);
+	z-index: 3;
+
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.416);
+
+	transition: all 0.5s ease 0s;
+}
+
+.sort_list {
+	padding: 20px;
+
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+
+	background-color: white;
+	border-bottom-left-radius: 6px;
+
+	p {
+		margin-bottom: 10px;
+	}
+
+	&__button {
+		min-width: 200px;
+		flex: 1 1 25%;
+		position: relative;
+		border-bottom: 2px solid #282b38;
+
+		button {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 16px;
+			font-weight: 500;
+			width: 100%;
+			padding: 10px 0;
+
+			color: #282b38;
+			background-color: white;
+
+			transition: all 0.3s ease 0s;
+		}
+	}
+
+	&__button:hover {
+		button {
+			background-color: #999ba3;
+		}
+	}
+}
+
+.sort.visibility {
+	left: 100%;
+}
+
+.sort.active {
+	left: calc(100% - 240px);
+}
+
+.sort_icon {
+	width: 70px;
+	height: 40px;
+
+	position: absolute;
+	top: 0;
+	right: 100%;
+	z-index: 3;
+
+	background-color: white;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+
+	background-image: url(https://icons.veryicon.com/png/o/leisure/crisp-app-icon-library-v3/filter-10.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	transition: all 0.2s ease 0s;
+}
+
+.sort_icon:hover {
+	width: 100px;
+}
+
+@media (max-width: 1023px) {
+	.sort_icon {
+		width: 70px;
+		height: 30px;
+	}
+
+	.sort_icon:hover {
+		width: 70px;
+	}
+}

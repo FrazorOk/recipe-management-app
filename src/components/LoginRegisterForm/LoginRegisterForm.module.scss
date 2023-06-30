@@ -1,0 +1,58 @@
+.form {
+	max-width: 450px;
+	margin: 120px auto;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+
+	h3 {
+		font-size: 38px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: white;
+
+		margin-bottom: 10px;
+	}
+
+	&__group {
+		min-width: 100%;
+		flex: 1 1 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__group label {
+		font-size: 18px;
+		text-align: center;
+		color: #cdcdcd;
+	}
+	&__group input {
+		font-size: 18px;
+		text-align: center;
+
+		min-width: 100%;
+		flex: 1 1 100%;
+
+		padding: 8px 15px;
+		margin-top: 15px;
+
+		border: 1px solid #cdcdcd;
+		border-radius: 6px;
+	}
+}
+
+.textDanger {
+	margin-top: 10px;
+	color: rgb(254, 71, 71);
+}
+
+@media (max-width: 1023px) {
+	.form button {
+		width: 100%;
+	}
+}

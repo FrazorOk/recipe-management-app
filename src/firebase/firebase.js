@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -11,7 +12,8 @@ const firebaseConfig = {
 	storageBucket: 'recipe-management-app-cb1c3.appspot.com',
 	messagingSenderId: '423856362069',
 	appId: '1:423856362069:web:6877fceed30b7639b4fadc',
+	databaseURL: 'https://recipe-management-app-cb1c3-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
