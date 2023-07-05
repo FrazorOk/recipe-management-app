@@ -1,5 +1,7 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
 import { IUser } from '../types/ISlices';
+
+const logout = createAction('auth/logout');
 
 interface IInitState {
 	dataUser: IUser;
@@ -25,6 +27,9 @@ export const userSlice = createSlice({
 		},
 		toggleAuth(state, action: PayloadAction<boolean>) {
 			state.auth = action.payload;
+		},
+		reset: () => {
+			return initialState;
 		},
 	},
 });

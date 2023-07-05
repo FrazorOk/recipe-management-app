@@ -5,12 +5,18 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import WhiteButton from '../UI/WhiteButton/WhiteButton';
 
-type Inputs = {
+export type Inputs = {
 	email: string;
 	password: string;
 };
 
-const LoginRegisterForm: FC = () => {
+interface ILoginRegisterForm {
+	onSubmit: SubmitHandler<Inputs>;
+	title: string;
+	btnTitle: string;
+}
+
+const LoginRegisterForm: FC<ILoginRegisterForm> = ({ onSubmit, title, btnTitle }) => {
 	const {
 		register,
 		handleSubmit,
@@ -18,13 +24,9 @@ const LoginRegisterForm: FC = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		console.log(data);
-	};
-
 	return (
 		<form className={s.form} onSubmit={handleSubmit(onSubmit)} noValidate>
-			<h3>Вхід</h3>
+			<h3>{title}</h3>
 
 			<div className={s.form__group}>
 				<label>Введіть вашу пошту:</label>
@@ -43,7 +45,7 @@ const LoginRegisterForm: FC = () => {
 			</div>
 
 			<WhiteButton type={'submit'}>
-				<span>Увійти</span>
+				<span>{btnTitle}</span>
 			</WhiteButton>
 		</form>
 	);

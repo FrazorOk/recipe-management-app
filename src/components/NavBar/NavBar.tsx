@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
 import s from './NavBar.module.scss';
 import icon from './logoIcon.svg';
@@ -9,8 +9,10 @@ import { HOME_ROUTE } from '../../utils/consts';
 
 import Container from '../UI/Container/Container';
 import LinkContainer from '../UI/LinkContainer/LinkContainer';
+import { logOut } from '../../store/ActionCreaters';
 
 const NavBar: FC = () => {
+	const dispatch = useAppDispatch();
 	let authUser = useAppSelector((state) => state.userReduser.auth);
 
 	let [openedNavBar, setOpenedNavBar] = useState(false);
@@ -19,6 +21,10 @@ const NavBar: FC = () => {
 	const iconClickHandler = (e: React.MouseEvent<HTMLElement>) => {
 		document.body.classList.toggle('_lock');
 		setOpenedNavBar((openedNavBar) => !openedNavBar);
+	};
+
+	const logoutClickHandler = (e: React.MouseEvent<HTMLElement>) => {
+		dispatch(logOut());
 	};
 
 	useEffect(() => {
@@ -66,7 +72,7 @@ const NavBar: FC = () => {
 
 							<ul className={s.menu__list}>
 								{authUser ? (
-									<li>
+									<li onClick={logoutClickHandler}>
 										<LinkContainer to={HOME_ROUTE} className={s.menu__link}>
 											<p>Вийти</p>
 										</LinkContainer>
