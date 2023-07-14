@@ -1,8 +1,6 @@
 import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
 import { IUser } from '../types/ISlices';
 
-const logout = createAction('auth/logout');
-
 interface IInitState {
 	dataUser: IUser;
 	auth: boolean;

@@ -1,4 +1,5 @@
 body {
+	height: 100%;
 	font-family: 'Ruda', sans-serif;
 }
 
@@ -12,6 +13,8 @@ body {
 	flex: 1 1 auto;
 
 	background-color: #3a3f58;
+	display: flex;
+	flex-direction: column;
 }
 
 body._lock {

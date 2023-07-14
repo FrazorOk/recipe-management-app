@@ -32,6 +32,7 @@ const LoginRegisterForm: FC<ILoginRegisterForm> = ({ onSubmit, title, btnTitle }
 				<label>Введіть вашу пошту:</label>
 				<input
 					type="email"
+					tabIndex={1}
 					placeholder="Enter email"
 					{...register('email', { required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i })}
 				/>
@@ -40,7 +41,7 @@ const LoginRegisterForm: FC<ILoginRegisterForm> = ({ onSubmit, title, btnTitle }
 
 			<div className={s.form__group}>
 				<label>Введіть ваш пароль:</label>
-				<input type="password" placeholder="Password" {...register('password', { required: true })} />
+				<input tabIndex={2} type="password" placeholder="Password" {...register('password', { required: true })} />
 				{errors.password && <span className={s.textDanger}>Введіть ваш пароль</span>}
 			</div>
 

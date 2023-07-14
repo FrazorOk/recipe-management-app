@@ -1,7 +1,10 @@
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { child, getDatabase, ref, set, get, onValue } from 'firebase/database';
+
 import { AppDispatch } from './store';
-import { child, getDatabase, ref, set, get } from 'firebase/database';
 import { userSlice } from './UserSlice';
+
+import { IinitFullForm } from '../components/CreateRecipeForm/CreateRecipeForm';
 
 export const registerNewUser = (email: string, password: string) => (dispatch: AppDispatch) => {
 	const auth = getAuth();
@@ -90,4 +93,27 @@ export const logOut = () => (dispatch: AppDispatch) => {
 		.catch((error) => {
 			console.log('An error happened');
 		});
+};
+
+export const createRecipe = (initFullForm: IinitFullForm, recipeId: string) => (dispatch: AppDispatch) => {
+	function setResipeInRecipes() {
+		const db = getDatabase();
+
+		set(ref(db, 'recipes/' + recipeId), {
+			...initFullForm,
+			id: recipeId,
+		});
+	}
+	function setResipeInUser() {
+		const db = getDatabase();
+		const auth = getAuth();
+
+		const userId = auth.currentUser?.uid;
+
+		set(ref(db, 'users/' + userId + '/createdRecipes/' + recipeId), {
+			id: recipeId,
+		});
+	}
+	setResipeInRecipes();
+	setResipeInUser();
 };
